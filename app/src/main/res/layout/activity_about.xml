@@ -6,4 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".AboutActivity">
 
+    <TextView
+        android:id="@+id/aboutTV"
+        android:layout_width="413dp"
+        android:layout_height="375dp"
+        android:gravity="center"
+        android:text="You can use this app to learn english during reading english websites. Just enter word, get translation, add it to local &quot;words database&quot; and that's it! Click button &quot;learn!&quot; on the main page and enjoy your learning!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.416" />
+
+    <TextView
+        android:id="@+id/PoweredTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Powered by Yandex.Translate"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
