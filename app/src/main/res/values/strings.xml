@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">EnglishTeacher</string>
+    <string name="poweredByYandexTranslate">Powered by Yandex.Translate</string>
+    <string name="titleTV">Engleacher</string>
+    <string name="addBtn">Add new words</string>
+    <string name="learnBtn">Learn!</string>
+    <string name="aboutBtn">About</string>
+    <string name="quitBtn">Quit</string>
+    <string name="aboutTV">Engleacher is an application whose main purpose is increasing level of your English vocabulary</string>
 </resources>
