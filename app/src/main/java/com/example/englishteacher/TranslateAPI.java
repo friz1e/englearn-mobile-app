@@ -16,10 +16,10 @@ import java.net.URLConnection;
 
 public class TranslateAPI extends AsyncTask<String, String, String> {
 
+    AddActivity addActivity;
     public String wordInserted = null;
 
     public TranslateAPI(String word) {
-        super();
         this.wordInserted = word;
     }
 
@@ -48,18 +48,19 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
                 ex.printStackTrace();
             }
 
-            return receivedJSON;
+            return receivedString;
 
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-        return receivedJSON;
+        return receivedString;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        AddActivity addActivity = new AddActivity(receivedString);
+    protected void onPostExecute(String s) throws NullPointerException {
+        super.onPostExecute(s);
+            addActivity.setWordEquivalentTV(receivedString);
     }
 }

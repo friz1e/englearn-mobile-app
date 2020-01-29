@@ -7,15 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class AddActivity extends AppCompatActivity {
 
     public AddActivity() {
-    }
 
-    public AddActivity(String received) {
-        this.receivedWordFromAPI = received;
     }
 
     private Button searchBtn;
@@ -26,8 +24,12 @@ public class AddActivity extends AppCompatActivity {
         searchBtn = (Button) findViewById(R.id.searchBtn);
     }
 
-    public String wordInsertedByUser;
-    public String receivedWordFromAPI;
+    public void setWordEquivalentTV(String receivedWord) {
+        TextView englishEquivalentTV = (TextView) findViewById(R.id.englishEquivalentTV);
+        englishEquivalentTV.setText(receivedWord);
+    }
+
+    private String wordInsertedByUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     wordInsertedByUser = addANewWordET.getText().toString();
-                    new TranslateAPI(wordInsertedByUser).execute();
+                    TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
+                    translateAPI.execute();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
