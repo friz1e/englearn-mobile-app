@@ -59,8 +59,7 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) throws NullPointerException {
+    protected void onPostExecute(String s){
         super.onPostExecute(s);
-            addActivity.setWordEquivalentTV(receivedString);
     }
 }

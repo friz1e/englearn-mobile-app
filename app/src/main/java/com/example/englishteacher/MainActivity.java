@@ -9,15 +9,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        setButtons();
-        setOnClickListeners();
-    }
-
     Button addBtn, learnBtn, aboutBtn, quitBtn;
 
     private void setButtons() {
@@ -32,6 +23,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         learnBtn.setOnClickListener(this);
         aboutBtn.setOnClickListener(this);
         quitBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        setButtons();
+        setOnClickListeners();
     }
 
     @Override

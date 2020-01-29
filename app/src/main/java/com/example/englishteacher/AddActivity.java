@@ -2,7 +2,6 @@ package com.example.englishteacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +28,6 @@ public class AddActivity extends AppCompatActivity {
         englishEquivalentTV.setText(receivedWord);
     }
 
-    private String wordInsertedByUser;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +38,10 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    wordInsertedByUser = addANewWordET.getText().toString();
+                    String wordInsertedByUser = addANewWordET.getText().toString();
                     TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
-                    translateAPI.execute();
+                    String result = translateAPI.execute().get();
+                    setWordEquivalentTV(result);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
