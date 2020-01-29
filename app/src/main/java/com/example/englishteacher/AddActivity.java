@@ -18,7 +18,7 @@ public class AddActivity extends AppCompatActivity {
         searchBtn = (Button) findViewById(R.id.searchBtn);
     }
 
-    private String wordInsertedByUser;
+    public String wordInsertedByUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     wordInsertedByUser = addANewWordET.getText().toString();
-                    new TranslateAPI().execute();
+                    new TranslateAPI(wordInsertedByUser).execute();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

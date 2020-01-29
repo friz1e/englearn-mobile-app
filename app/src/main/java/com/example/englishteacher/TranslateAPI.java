@@ -11,14 +11,19 @@ import java.net.URLConnection;
 
 public class TranslateAPI extends AsyncTask<String, String, String> {
 
+    public String wordInserted = null;
+
+    public TranslateAPI(String word) {
+        super();
+        this.wordInserted = word;
+    }
+
     public static final String API_KEY = "";
     private String receivedJSON = null;
-    public String wordInserted = null;
 
     @Override
     protected String doInBackground(String... strings) {
         try {
-            System.out.println(wordInserted+"3");
             URL url = new URL("https://translate.yandex.net/api/v1.5/tr.json/translate?key=" + API_KEY + "&text=" + wordInserted +"&lang=en-pl");
             URLConnection urlConnection = url.openConnection();
             urlConnection.addRequestProperty("User-Agent", "REST-API");
