@@ -1,6 +1,11 @@
 package com.example.englishteacher;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.util.JsonReader;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +25,7 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
 
     public static final String API_KEY = "";
     private String receivedJSON = null;
+    private String receivedString = null;
 
     @Override
     protected String doInBackground(String... strings) {
@@ -33,7 +39,17 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
             receivedJSON = new BufferedReader(new InputStreamReader(inStream)).readLine();
             inStream.close();
 
+            try {
+                JSONObject JSONresponse = new JSONObject(receivedJSON);
+                receivedString = JSONresponse.getString("text");
+                receivedString = receivedString.replaceAll("[\\[\\]\"]", "");
+                System.out.println(receivedString);
+            } catch(JSONException ex) {
+                ex.printStackTrace();
+            }
+
             return receivedJSON;
+
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -44,6 +60,6 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        System.out.println(receivedJSON);
+        AddActivity addActivity = new AddActivity(receivedString);
     }
 }

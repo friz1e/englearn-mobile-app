@@ -25,17 +25,15 @@
         android:id="@+id/PoweredTV"
         android:layout_width="375dp"
         android:layout_height="118dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/poweredByYandexTranslate"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutTV"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.591" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

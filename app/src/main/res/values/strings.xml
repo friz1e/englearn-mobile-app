@@ -14,5 +14,6 @@
 
     // activity_add.xml //
     <string name="addAWordTV">Add a new word!</string>
+    <string name="englishEquivalent">%1$s</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.englishteacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,13 @@ import android.widget.EditText;
 
 
 public class AddActivity extends AppCompatActivity {
+
+    public AddActivity() {
+    }
+
+    public AddActivity(String received) {
+        this.receivedWordFromAPI = received;
+    }
 
     private Button searchBtn;
     private EditText addANewWordET;
@@ -19,6 +27,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public String wordInsertedByUser;
+    public String receivedWordFromAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
