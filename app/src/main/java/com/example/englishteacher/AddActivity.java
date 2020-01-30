@@ -35,10 +35,14 @@ public class AddActivity extends AppCompatActivity  {
     private String wordInsertedByUser;
     private String result;
 
+    DatabaseHelper wordsDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        wordsDatabase = new DatabaseHelper(this);
 
         setComponents();
         addingBtn.setVisibility(View.INVISIBLE);
@@ -70,6 +74,7 @@ public class AddActivity extends AppCompatActivity  {
                 }
             }
         });
+
         addingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
