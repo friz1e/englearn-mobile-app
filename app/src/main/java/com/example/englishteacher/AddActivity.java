@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity  {
 
     public AddActivity() {
 
@@ -17,16 +16,24 @@ public class AddActivity extends AppCompatActivity {
 
     private Button searchBtn;
     private EditText addANewWordET;
+    private TextView englishEquivalentTV;
+    private Button addingBtn;
+    private Button cancelBtn;
 
     private void setComponents() {
-        addANewWordET = (EditText) findViewById(R.id.addANewWordET);
         searchBtn = (Button) findViewById(R.id.searchBtn);
+        addANewWordET = (EditText) findViewById(R.id.addANewWordET);
+        addingBtn = (Button) findViewById(R.id.addingBtn);
+        cancelBtn = (Button) findViewById(R.id.cancelBtn);
     }
 
     public void setWordEquivalentTV(String receivedWord) {
-        TextView englishEquivalentTV = (TextView) findViewById(R.id.englishEquivalentTV);
+        englishEquivalentTV = (TextView) findViewById(R.id.englishEquivalentTV);
         englishEquivalentTV.setText(receivedWord);
     }
+
+    private String wordInsertedByUser;
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +41,54 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         setComponents();
+        addingBtn.setVisibility(View.INVISIBLE);
+        cancelBtn.setVisibility(View.INVISIBLE);
+        addingBtn.setEnabled(false);
+        cancelBtn.setEnabled(false);
+
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    String wordInsertedByUser = addANewWordET.getText().toString();
+                    wordInsertedByUser = addANewWordET.getText().toString();
                     TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
-                    String result = translateAPI.execute().get();
+                    result = translateAPI.execute().get();
                     setWordEquivalentTV(result);
+                    if(addANewWordET.getText().length()==0) {
+                        addingBtn.setVisibility(View.INVISIBLE);
+                        cancelBtn.setVisibility(View.INVISIBLE);
+                        addingBtn.setEnabled(false);
+                        cancelBtn.setEnabled(false);
+                    } else {
+                        addingBtn.setVisibility(View.VISIBLE);
+                        cancelBtn.setVisibility(View.VISIBLE);
+                        addingBtn.setEnabled(true);
+                        cancelBtn.setEnabled(true);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        addingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wordInsertedByUser = addANewWordET.getText().toString();
+                englishEquivalentTV.getText().toString();
+                wordInsertedByUser = null;
+                result = null;
+                addANewWordET.setText("");
+                englishEquivalentTV.setText("");
+                addingBtn.setVisibility(View.INVISIBLE);
+                cancelBtn.setVisibility(View.INVISIBLE);
+                addingBtn.setEnabled(false);
+                cancelBtn.setEnabled(false);
             }
         });
     }

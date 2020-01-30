@@ -14,5 +14,7 @@
 
     // activity_add.xml //
     <string name="addAWordTV">Add a new word!</string>
+    <string name="addingBtn">Add word to database</string>
+    <string name="cancelBtn">Cancel</string>
 
 </resources>

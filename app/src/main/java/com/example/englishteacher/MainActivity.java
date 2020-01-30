@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button addBtn, learnBtn, aboutBtn, quitBtn;
 
     private void setButtons() {
-        addBtn = (Button) findViewById(R.id.addBtn);
+        addBtn = (Button) findViewById(R.id.addingBtn);
         learnBtn = (Button) findViewById(R.id.learnBtn);
         aboutBtn = (Button) findViewById(R.id.aboutBtn);
         quitBtn = (Button) findViewById(R.id.quitBtn);
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.addBtn:
+            case R.id.addingBtn:
                     Intent goToAddActivity = new Intent(MainActivity.this, AddActivity.class);
                     startActivity(goToAddActivity);
                 break;

@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class TranslateAPI extends AsyncTask<String, String, String> {
+public class TranslateAPI extends AsyncTask<String, String, String>{
 
     AddActivity addActivity;
     public String wordInserted = null;
@@ -40,8 +40,8 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
             inStream.close();
 
             try {
-                JSONObject JSONresponse = new JSONObject(receivedJSON);
-                receivedString = JSONresponse.getString("text");
+                JSONObject response = new JSONObject(receivedJSON);
+                receivedString = response.getString("text");
                 receivedString = receivedString.replaceAll("[\\[\\]\"]", "");
                 System.out.println(receivedString);
             } catch(JSONException ex) {
@@ -58,8 +58,4 @@ public class TranslateAPI extends AsyncTask<String, String, String> {
         return receivedString;
     }
 
-    @Override
-    protected void onPostExecute(String s){
-        super.onPostExecute(s);
-    }
 }
