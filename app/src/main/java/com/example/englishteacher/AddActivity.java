@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity  {
 
@@ -78,7 +79,13 @@ public class AddActivity extends AppCompatActivity  {
         addingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
+                if (isInserted==true) {
+                    Toast.makeText(AddActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(AddActivity.this, "Data not inserted", Toast.LENGTH_LONG).show();
+                }
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {

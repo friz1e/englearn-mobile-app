@@ -1,8 +1,6 @@
 package com.example.englishteacher;
 
-import android.content.res.Resources;
 import android.os.AsyncTask;
-import android.util.JsonReader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
