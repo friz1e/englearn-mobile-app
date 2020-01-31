@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getRandomWordsPair() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor response = db.rawQuery("SELECT * FROM " + TABLE_NAME + "ORDER BY RANDOM() LIMIT 1", null );
+        Cursor response = db.rawQuery("SELECT foreign_language, native_language FROM " + TABLE_NAME + " ORDER BY RANDOM() LIMIT 1", null );
         return response;
     }
 }
