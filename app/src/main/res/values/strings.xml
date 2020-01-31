@@ -3,14 +3,14 @@
     <string name="poweredByYandexTranslate">Powered by Yandex.Translate</string>
 
     // activity_main.xml //
-    <string name="titleTV">Engleacher</string>
+    <string name="titleTV">Englearn</string>
     <string name="addBtn">Add new words</string>
     <string name="learnBtn">Learn!</string>
     <string name="aboutBtn">About</string>
     <string name="quitBtn">Quit</string>
 
     // activity_about.xml //
-    <string name="aboutTV">Engleacher is an application whose main purpose is increasing level of your English vocabulary</string>
+    <string name="aboutTV">Englearn is an application whose main purpose is increasing level of your English vocabulary</string>
 
     // activity_add.xml //
     <string name="addAWordTV">Add a new word!</string>

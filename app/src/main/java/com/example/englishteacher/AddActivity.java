@@ -2,6 +2,7 @@ package com.example.englishteacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,30 +49,29 @@ public class AddActivity extends AppCompatActivity  {
         setComponents();
         addingBtn.setVisibility(View.INVISIBLE);
         cancelBtn.setVisibility(View.INVISIBLE);
-        addingBtn.setEnabled(false);
-        cancelBtn.setEnabled(false);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    wordInsertedByUser = addANewWordET.getText().toString();
-                    TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
-                    result = translateAPI.execute().get();
-                    setWordEquivalentTV(result);
-                    if(addANewWordET.getText().length()==0) {
-                        addingBtn.setVisibility(View.INVISIBLE);
-                        cancelBtn.setVisibility(View.INVISIBLE);
-                        addingBtn.setEnabled(false);
-                        cancelBtn.setEnabled(false);
-                    } else {
-                        addingBtn.setVisibility(View.VISIBLE);
-                        cancelBtn.setVisibility(View.VISIBLE);
-                        addingBtn.setEnabled(true);
-                        cancelBtn.setEnabled(true);
+                if (addANewWordET.getText().toString().length()==0) {
+                    Toast.makeText(AddActivity.this, "You haven't entered a word!", Toast.LENGTH_LONG).show();
+                    addingBtn.setVisibility(View.INVISIBLE);
+                    cancelBtn.setVisibility(View.INVISIBLE);
+                    if (englishEquivalentTV.getText() != null) {
+                        englishEquivalentTV.setText("");
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                }
+                else {
+                    try {
+                        wordInsertedByUser = addANewWordET.getText().toString();
+                        TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
+                        result = translateAPI.execute().get();
+                        setWordEquivalentTV(result);
+                            addingBtn.setVisibility(View.VISIBLE);
+                            cancelBtn.setVisibility(View.VISIBLE);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -79,12 +79,17 @@ public class AddActivity extends AppCompatActivity  {
         addingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
-                if (isInserted==true) {
-                    Toast.makeText(AddActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
+                Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);
+                if (response.getCount() == 1) {
+                    Toast.makeText(AddActivity.this, "This word already exists in the database!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(AddActivity.this, "Data not inserted", Toast.LENGTH_LONG).show();
+                    boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
+                    if (isInserted == true) {
+                        Toast.makeText(AddActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(AddActivity.this, "Data not inserted", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -99,8 +104,6 @@ public class AddActivity extends AppCompatActivity  {
                 englishEquivalentTV.setText("");
                 addingBtn.setVisibility(View.INVISIBLE);
                 cancelBtn.setVisibility(View.INVISIBLE);
-                addingBtn.setEnabled(false);
-                cancelBtn.setEnabled(false);
             }
         });
     }

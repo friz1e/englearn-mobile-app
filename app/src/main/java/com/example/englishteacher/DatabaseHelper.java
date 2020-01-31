@@ -2,6 +2,7 @@ package com.example.englishteacher;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -43,5 +44,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else {
             return true;
         }
+    }
+    public Cursor checkIsThisWordInTheDatabase(String wordInsertedByUser) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor response = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE FOREIGN_LANGUAGE = '" + wordInsertedByUser + "'", null);
+        return response;
     }
 }
