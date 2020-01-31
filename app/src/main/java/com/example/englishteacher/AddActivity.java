@@ -2,9 +2,13 @@ package com.example.englishteacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,6 +36,14 @@ public class AddActivity extends AppCompatActivity  {
     public void setWordEquivalentTV(String receivedWord) {
         englishEquivalentTV = (TextView) findViewById(R.id.englishEquivalentTV);
         englishEquivalentTV.setText(receivedWord);
+    }
+
+    public void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     private String wordInsertedByUser;
@@ -66,6 +78,7 @@ public class AddActivity extends AppCompatActivity  {
                         setWordEquivalentTV(result);
                         addingBtn.setVisibility(View.VISIBLE);
                         cancelBtn.setVisibility(View.VISIBLE);
+                        closeKeyboard();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -79,13 +92,15 @@ public class AddActivity extends AppCompatActivity  {
                 Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);
                 if (response.getCount() == 1) {
                     Toast.makeText(AddActivity.this, "This word already exists in the database!", Toast.LENGTH_SHORT).show();
+                    addingBtn.setVisibility(View.INVISIBLE);
+                    cancelBtn.setVisibility(View.INVISIBLE);
                 }
                 else {
                     boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
                     if (isInserted == true) {
-                        Toast.makeText(AddActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddActivity.this, "Word inserted", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(AddActivity.this, "Data not inserted", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddActivity.this, "Word not inserted", Toast.LENGTH_LONG).show();
                     }
                 }
             }
