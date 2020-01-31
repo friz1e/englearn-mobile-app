@@ -24,4 +24,10 @@
     <string name="englishPolishBtn">English --> Polish</string>
     <string name="polishEnglishBtn">Polish --> English</string>
 
+    activity_english_polish.xml // activity_polish_english.xml
+    <string name="englishToPolish">English to Polish</string>
+    <string name="polishToEnglish">Polish to English</string>
+    <string name="enterWordET">Enter</string>
+    <string name="checkBtn">Check</string>
+
 </resources>

@@ -45,9 +45,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
     public Cursor checkIsThisWordInTheDatabase(String wordInsertedByUser) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor response = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE FOREIGN_LANGUAGE = '" + wordInsertedByUser + "'", null);
+        return response;
+    }
+
+    public Cursor getRandomWordsPair() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor response = db.rawQuery("SELECT * FROM " + TABLE_NAME + "ORDER BY RANDOM() LIMIT 1", null );
         return response;
     }
 }
