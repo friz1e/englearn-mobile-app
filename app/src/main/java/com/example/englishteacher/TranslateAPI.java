@@ -41,7 +41,6 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
                 JSONObject response = new JSONObject(receivedJSON);
                 receivedString = response.getString("text");
                 receivedString = receivedString.replaceAll("[\\[\\]\"]", "");
-                System.out.println(receivedString);
             } catch(JSONException ex) {
                 ex.printStackTrace();
             }

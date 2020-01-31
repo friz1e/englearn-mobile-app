@@ -57,9 +57,6 @@ public class AddActivity extends AppCompatActivity  {
                     Toast.makeText(AddActivity.this, "You haven't entered a word!", Toast.LENGTH_LONG).show();
                     addingBtn.setVisibility(View.INVISIBLE);
                     cancelBtn.setVisibility(View.INVISIBLE);
-                    if (englishEquivalentTV.getText() != null) {
-                        englishEquivalentTV.setText("");
-                    }
                 }
                 else {
                     try {
@@ -67,8 +64,8 @@ public class AddActivity extends AppCompatActivity  {
                         TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
                         result = translateAPI.execute().get();
                         setWordEquivalentTV(result);
-                            addingBtn.setVisibility(View.VISIBLE);
-                            cancelBtn.setVisibility(View.VISIBLE);
+                        addingBtn.setVisibility(View.VISIBLE);
+                        cancelBtn.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
