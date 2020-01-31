@@ -10,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".PolishEnglishActivity"></activity>
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@anim/fade_out" />
+
+        <activity android:name=".PolishEnglishActivity" />
         <activity android:name=".EnglishPolishActivity" />
         <activity android:name=".AddActivity" />
         <activity android:name=".LearnActivity" />

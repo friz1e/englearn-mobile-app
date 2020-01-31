@@ -1,7 +1,7 @@
 <resources>
     // unique //
     <string name="poweredByYandexTranslate">Powered by Yandex.Translate</string>
-
+    <string name="yandexLink">http://translate.yandex.com"</string>
     // activity_main.xml //
     <string name="titleTV">Englearn</string>
     <string name="addBtn">Add new words</string>
