@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.englishteacher">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -9,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AddActivity"></activity>
+        <activity android:name=".PolishEnglishActivity"></activity>
+        <activity android:name=".EnglishPolishActivity" />
+        <activity android:name=".AddActivity" />
         <activity android:name=".LearnActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MainActivity">

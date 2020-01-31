@@ -4,4 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LearnActivity"/>
+    tools:context=".LearnActivity">
+
+    <TextView
+        android:id="@+id/learnTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/learnTV"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <TextView
+        android:id="@+id/chooseYourTeachingMethodTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/chooseYourTeachingMethodTV"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learnTV"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <Button
+        android:id="@+id/englishPolishBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/englishPolishBtn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseYourTeachingMethodTV"
+        app:layout_constraintVertical_bias="0.169" />
+
+    <Button
+        android:id="@+id/polishEnglishBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/polishEnglishBtn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/englishPolishBtn"
+        app:layout_constraintVertical_bias="0.095" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

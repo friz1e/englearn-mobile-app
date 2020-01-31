@@ -14,7 +14,14 @@
 
     // activity_add.xml //
     <string name="addAWordTV">Add a new word!</string>
+    <string name="addANewWordET">Enter your word</string>
     <string name="addingBtn">Add word to database</string>
     <string name="cancelBtn">Cancel</string>
+
+    // activity_learn.xml //
+    <string name="learnTV">Learn!</string>
+    <string name="chooseYourTeachingMethodTV">Choose your teaching method!</string>
+    <string name="englishPolishBtn">English --> Polish</string>
+    <string name="polishEnglishBtn">Polish --> English</string>
 
 </resources>
