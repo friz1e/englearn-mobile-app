@@ -10,7 +10,7 @@
         android:icon="@mipmap/englearn"
         android:roundIcon="@mipmap/englearn"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar.Light">
+        android:theme="@style/AppTheme.NoActionBar.DarkDay">
 
         <activity android:name=".PolishEnglishActivity" />
         <activity android:name=".EnglishPolishActivity" />
