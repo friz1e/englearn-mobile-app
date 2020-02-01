@@ -17,7 +17,6 @@
         <activity android:name=".AddActivity" />
         <activity android:name=".LearnActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

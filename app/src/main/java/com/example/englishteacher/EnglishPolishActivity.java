@@ -36,6 +36,11 @@ public class EnglishPolishActivity extends AppCompatActivity {
     String foreignLanguageWord;
     String nativeLanguageWord;
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

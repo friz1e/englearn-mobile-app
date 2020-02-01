@@ -2,6 +2,7 @@ package com.example.englishteacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -18,7 +19,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
     Button startBtn, checkBtn, nextBtn;
 
     private void setComponents() {
-        startBtn = (Button) findViewById(R.id.startBtn);
+        startBtn = (Button) findViewById(R.id.startBtn2);
         questionWordTV = (TextView) findViewById(R.id.questionWordTV);
         answerWordTV = (TextView) findViewById(R.id.answerWordTV);
         enterET = (EditText) findViewById(R.id.enterET);
@@ -29,6 +30,11 @@ public class PolishEnglishActivity extends AppCompatActivity {
     DatabaseHelper wordsDatabase;
     String foreignLanguageWord;
     String nativeLanguageWord;
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
