@@ -7,10 +7,10 @@
     <application
         android:label="Englearn"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/englearn"
+        android:roundIcon="@mipmap/englearn"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar.Light">
 
         <activity android:name=".PolishEnglishActivity" />
         <activity android:name=".EnglishPolishActivity" />

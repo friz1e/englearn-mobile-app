@@ -67,20 +67,24 @@ public class AddActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 if (addANewWordET.getText().toString().length()==0) {
                     Toast.makeText(AddActivity.this, "You haven't entered a word!", Toast.LENGTH_LONG).show();
-                    addingBtn.setVisibility(View.INVISIBLE);
-                    cancelBtn.setVisibility(View.INVISIBLE);
                 }
                 else {
-                    try {
-                        wordInsertedByUser = addANewWordET.getText().toString();
-                        TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
-                        result = translateAPI.execute().get();
-                        setWordEquivalentTV(result);
-                        addingBtn.setVisibility(View.VISIBLE);
-                        cancelBtn.setVisibility(View.VISIBLE);
-                        closeKeyboard();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    wordInsertedByUser = addANewWordET.getText().toString();
+                    Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);
+                    if (response.getCount() == 1) {
+                        Toast.makeText(AddActivity.this, "This word already exists in the database!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        try {
+                            TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
+                            result = translateAPI.execute().get();
+                            setWordEquivalentTV(result);
+                            addingBtn.setVisibility(View.VISIBLE);
+                            cancelBtn.setVisibility(View.VISIBLE);
+                            closeKeyboard();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -89,20 +93,15 @@ public class AddActivity extends AppCompatActivity  {
         addingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);
-                if (response.getCount() == 1) {
-                    Toast.makeText(AddActivity.this, "This word already exists in the database!", Toast.LENGTH_SHORT).show();
-                    addingBtn.setVisibility(View.INVISIBLE);
-                    cancelBtn.setVisibility(View.INVISIBLE);
-                }
-                else {
                     boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
                     if (isInserted == true) {
                         Toast.makeText(AddActivity.this, "Word inserted", Toast.LENGTH_LONG).show();
+                        addingBtn.setVisibility(View.INVISIBLE);
+                        cancelBtn.setVisibility(View.INVISIBLE);
+                        addANewWordET.setText("");
                     } else {
                         Toast.makeText(AddActivity.this, "Word not inserted", Toast.LENGTH_LONG).show();
                     }
-                }
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {
