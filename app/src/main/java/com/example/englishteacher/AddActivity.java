@@ -70,6 +70,13 @@ public class AddActivity extends AppCompatActivity  {
         return false;
     }
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
     private String wordInsertedByUser;
     private String result;
 

@@ -1,7 +1,9 @@
 package com.example.englishteacher;
 
 import android.os.AsyncTask;
+import android.renderscript.Allocation;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,39 +16,49 @@ import java.net.URLConnection;
 
 public class TranslateAPI extends AsyncTask<String, String, String>{
 
-    AddActivity addActivity;
     public String wordInserted = null;
 
     public TranslateAPI(String word) {
         this.wordInserted = word;
     }
 
-    public static final String API_KEY = "";
-    private String receivedJSON = null;
+    private StringBuilder contentBuilder = null;
     private String receivedString = null;
 
     @Override
     protected String doInBackground(String... strings) {
         try {
-            URL url = new URL("https://translate.yandex.net/api/v1.5/tr.json/translate?key=" + API_KEY + "&text=" + wordInserted +"&lang=en-pl");
+            URL url = new URL("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pl&dt=t&q=" + receivedString);
             URLConnection urlConnection = url.openConnection();
             urlConnection.addRequestProperty("User-Agent", "REST-API");
 
             InputStream inStream = urlConnection.getInputStream();
 
-            receivedJSON = new BufferedReader(new InputStreamReader(inStream)).readLine();
-            inStream.close();
+            contentBuilder = new StringBuilder();
+            try {
+                BufferedReader receivedJSON = new BufferedReader(new InputStreamReader(inStream));
+                String str;
+                while((str = receivedJSON.readLine()) != null) {
+                    contentBuilder.append(str);
+                }
+                inStream.close();
+            }
+
+            catch(IOException e) {
+                e.getMessage();
+            }
+
+            receivedString = contentBuilder.toString();
 
             try {
-                JSONObject response = new JSONObject(receivedJSON);
-                receivedString = response.getString("text");
-                receivedString = receivedString.replaceAll("[\\[\\]\"]", "");
+                JSONArray jsonArray = new JSONArray(receivedString);
+                receivedString = jsonArray.getString(0);
+                receivedString = receivedString.substring(receivedString.indexOf("[[\"")+3, receivedString.indexOf("]]")-20);
             } catch(JSONException ex) {
                 ex.printStackTrace();
             }
 
             return receivedString;
-
 
         } catch (IOException ex) {
             ex.printStackTrace();

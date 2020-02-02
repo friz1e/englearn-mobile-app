@@ -21,6 +21,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.anim_fade_in, R.anim.anim_fade_out);
                 finish();
             }
-        }, 4000);
+        }, 1000);
     }
 }
