@@ -53,7 +53,7 @@ public class EnglishPolishActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor response = wordsDatabase.getRandomWordsPair();
+                Cursor response = wordsDatabase.getRandomWordsPair();                                    //get pair of words
                 if(response.moveToFirst()) {
                     do {
                         foreignLanguageWord = response.getString(0);
@@ -77,7 +77,7 @@ public class EnglishPolishActivity extends AppCompatActivity {
 
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                            //check is user's answer correct
                 if (nativeLanguageWord.equals(enterET.getText().toString())) {
                     questionWordTV.setTextColor(Color.GREEN);
                     checkBtn.setVisibility(View.INVISIBLE);
@@ -94,7 +94,7 @@ public class EnglishPolishActivity extends AppCompatActivity {
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                             //get a new pair of words
                 Cursor response = wordsDatabase.getRandomWordsPair();
                 if(response.moveToFirst()) {
                     do {

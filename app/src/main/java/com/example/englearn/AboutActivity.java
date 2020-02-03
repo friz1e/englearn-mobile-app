@@ -3,14 +3,17 @@ package com.example.englearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private float x1, x2, y1, y2;
+    private float x1, x2, y1, y2;                                                                        //co-ordinates
 
-    public boolean onTouchEvent(MotionEvent touchEvent) {
+    public boolean onTouchEvent(MotionEvent touchEvent) {                                               // swiping mechanism
         switch(touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchEvent.getX();
@@ -29,7 +32,7 @@ public class AboutActivity extends AppCompatActivity {
         return false;
     }
 
-    public void onBackPressed() {
+    public void onBackPressed() {                                                                       //back button functionality
         super.onBackPressed();
         Intent i = new Intent(AboutActivity.this, LearnActivity.class);
         startActivity(i);

@@ -2,6 +2,7 @@ package com.example.englearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -33,7 +34,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private float x1, x2, y1, y2;
 
-    public boolean onTouchEvent(MotionEvent touchEvent) {
+    public boolean onTouchEvent(MotionEvent touchEvent) {                                               //swiping mechanism
         switch(touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchEvent.getX();
@@ -56,7 +57,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         return false;
     }
 
-    public void onBackPressed() {
+    public void onBackPressed() {                                                                       //back button functionality
         super.onBackPressed();
         Intent i = new Intent(LearnActivity.this, AddActivity.class);
         startActivity(i);
@@ -66,12 +67,12 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.englishPolishBtn:
+            case R.id.englishPolishBtn:                                                                 //going to EnglishPolishActivity
                 Intent goToEnglishPolishActivity = new Intent(LearnActivity.this, EnglishPolishActivity.class);
                 startActivity(goToEnglishPolishActivity);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
                 break;
-            case R.id.polishEnglishBtn:
+            case R.id.polishEnglishBtn:                                                                 //going to PolishEnglishActivity
                 Intent goToPolishEnglishActivity = new Intent(LearnActivity.this, PolishEnglishActivity.class);
                 startActivity(goToPolishEnglishActivity);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);

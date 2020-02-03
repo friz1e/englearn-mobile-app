@@ -26,19 +26,19 @@ public class AddActivity extends AppCompatActivity  {
     private Button addingBtn;
     private Button cancelBtn;
 
-    private void setComponents() {
+    private void setComponents() {                                                                      // setting buttons
         searchBtn = (Button) findViewById(R.id.searchBtn);
         addANewWordET = (EditText) findViewById(R.id.addANewWordET);
         addingBtn = (Button) findViewById(R.id.addingBtn);
         cancelBtn = (Button) findViewById(R.id.cancelBtn);
     }
 
-    public void setWordEquivalentTV(String receivedWord) {
+    public void setWordEquivalentTV(String receivedWord) {                                              //setting word received from translating API
         englishEquivalentTV = (TextView) findViewById(R.id.englishEquivalentTV);
         englishEquivalentTV.setText(receivedWord);
     }
 
-    public void closeKeyboard() {
+    public void closeKeyboard() {                                                                       //closing keyboard
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -46,9 +46,9 @@ public class AddActivity extends AppCompatActivity  {
         }
     }
 
-    private float x1, x2, y1, y2;
+    private float x1, x2, y1, y2;                                                                       //co-ordinates
 
-    public boolean onTouchEvent(MotionEvent touchEvent) {
+    public boolean onTouchEvent(MotionEvent touchEvent) {                                               //swiping mechanism
         switch(touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchEvent.getX();
@@ -67,17 +67,17 @@ public class AddActivity extends AppCompatActivity  {
         return false;
     }
 
-    public void onBackPressed() {
+    public void onBackPressed() {                                                                       //back button functionality
         super.onBackPressed();
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(1);
     }
 
-    private String wordInsertedByUser;
-    private String result;
+    private String wordInsertedByUser;                                                                  //input String
+    private String result;                                                                              //result of all operations
 
-    DatabaseHelper wordsDatabase;
+    DatabaseHelper wordsDatabase;                                                                       //database helper
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,21 +92,21 @@ public class AddActivity extends AppCompatActivity  {
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                           //check is word entered to edittext window
                 if (addANewWordET.getText().toString().length()==0) {
                     Toast.makeText(AddActivity.this, "You haven't entered a word!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    wordInsertedByUser = addANewWordET.getText().toString();
-                    Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);
+                    wordInsertedByUser = addANewWordET.getText().toString();                           //parse this word
+                    Cursor response = wordsDatabase.checkIsThisWordInTheDatabase(wordInsertedByUser);  //check is word in the database
                     if (response.getCount() == 1) {
                         Toast.makeText(AddActivity.this, "This word already exists in the database!", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         try {
-                            TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);
-                            result = translateAPI.execute().get();
-                            setWordEquivalentTV(result);
+                            TranslateAPI translateAPI = new TranslateAPI(wordInsertedByUser);           //send word to API
+                            result = translateAPI.execute().get();                                      //parse word in translated form
+                            setWordEquivalentTV(result);                                                //set this word as the equivalent of user's input word but in other language
                             addingBtn.setVisibility(View.VISIBLE);
                             cancelBtn.setVisibility(View.VISIBLE);
                             closeKeyboard();
@@ -121,7 +121,7 @@ public class AddActivity extends AppCompatActivity  {
         addingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);
+                    boolean isInserted = wordsDatabase.insertData(wordInsertedByUser, result);          //insert words to database
                     if (isInserted == true) {
                         Toast.makeText(AddActivity.this, "Word inserted", Toast.LENGTH_LONG).show();
                         addingBtn.setVisibility(View.INVISIBLE);
@@ -134,7 +134,7 @@ public class AddActivity extends AppCompatActivity  {
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                           //canceling and clearing all components
                 wordInsertedByUser = addANewWordET.getText().toString();
                 englishEquivalentTV.getText().toString();
                 wordInsertedByUser = null;

@@ -35,6 +35,8 @@ public class PolishEnglishActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
     }
 
+    AboutActivity aboutActivity = new AboutActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor response = wordsDatabase.getRandomWordsPair();
+                Cursor response = wordsDatabase.getRandomWordsPair();                                   //get pair of words
                 if(response.moveToFirst()) {
                     do {
                         foreignLanguageWord = response.getString(0);
@@ -77,7 +79,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
 
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                             //check is user's answer correct
                 if (foreignLanguageWord.equals(enterET.getText().toString())) {
                     questionWordTV.setTextColor(Color.GREEN);
                     checkBtn.setVisibility(View.INVISIBLE);
@@ -94,7 +96,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                                             //get a new pair of words
                 Cursor response = wordsDatabase.getRandomWordsPair();
                 if(response.moveToFirst()) {
                     do {
