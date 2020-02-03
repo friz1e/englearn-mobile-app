@@ -1,11 +1,6 @@
-package com.example.englishteacher;
+package com.example.englearn;
 
 import android.os.AsyncTask;
-import android.renderscript.Allocation;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,8 +23,9 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
     @Override
     protected String doInBackground(String... strings) {
         try {
-            URL url = new URL("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pl&dt=t&q=" + receivedString);
+            URL url = new URL("https://translate.googleapis.com/translate_a/t?client=p&sl=en&tl=pl&dt=t&q=" + wordInserted);
             URLConnection urlConnection = url.openConnection();
+            urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.addRequestProperty("User-Agent", "REST-API");
 
             InputStream inStream = urlConnection.getInputStream();
@@ -49,14 +45,8 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
             }
 
             receivedString = contentBuilder.toString();
+            receivedString = receivedString.replaceAll("\"\"", "");
 
-            try {
-                JSONArray jsonArray = new JSONArray(receivedString);
-                receivedString = jsonArray.getString(0);
-                receivedString = receivedString.substring(receivedString.indexOf("[[\"")+3, receivedString.indexOf("]]")-20);
-            } catch(JSONException ex) {
-                ex.printStackTrace();
-            }
 
             return receivedString;
 

@@ -1,4 +1,4 @@
-package com.example.englishteacher;
+package com.example.englearn;
 
 import android.content.ContentValues;
 import android.content.Context;

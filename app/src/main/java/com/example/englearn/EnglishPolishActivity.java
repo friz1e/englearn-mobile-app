@@ -1,21 +1,15 @@
-package com.example.englishteacher;
+package com.example.englearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.ColorStateList;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class EnglishPolishActivity extends AppCompatActivity {
 

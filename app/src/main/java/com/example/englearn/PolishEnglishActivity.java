@@ -1,8 +1,7 @@
-package com.example.englishteacher;
+package com.example.englearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
