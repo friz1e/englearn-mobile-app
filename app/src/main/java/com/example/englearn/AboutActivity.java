@@ -2,12 +2,10 @@ package com.example.englearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 
 public class AboutActivity extends AppCompatActivity {
 

@@ -5,19 +5,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="Englearn"
         android:allowBackup="true"
         android:icon="@mipmap/englearn"
+        android:label="Englearn"
         android:roundIcon="@mipmap/englearn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar.DarkDay">
-
-        <activity android:name="com.example.englearn.PolishEnglishActivity" />
-        <activity android:name="com.example.englearn.EnglishPolishActivity" />
-        <activity android:name="com.example.englearn.AddActivity" />
-        <activity android:name="com.example.englearn.LearnActivity" />
-        <activity android:name="com.example.englearn.AboutActivity" />
-        <activity android:name="com.example.englearn.WelcomeActivity">
+        <activity android:name=".WordsListActivity"></activity>
+        <activity android:name=".PolishEnglishActivity" />
+        <activity android:name=".EnglishPolishActivity" />
+        <activity android:name=".AddActivity" />
+        <activity android:name=".LearnActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

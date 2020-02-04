@@ -24,11 +24,15 @@
     <string name="addingBtn">Add word to database</string>
     <string name="cancelBtn">Cancel</string>
 
+    // activity_words_list.xml
+    <string name="noWordsTV">There are not any words in the database!</string>
+
     // activity_learn.xml //
     <string name="learnTV">Learn!</string>
     <string name="chooseYourTeachingMethodTV">Choose your teaching method!</string>
     <string name="englishPolishBtn">English --> Polish</string>
     <string name="polishEnglishBtn">Polish --> English</string>
+    <string name="wordsListBtn">Words List</string>
 
     activity_english_polish.xml // activity_polish_english.xml
     <string name="startBtn">Start!</string>

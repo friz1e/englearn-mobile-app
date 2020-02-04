@@ -11,16 +11,18 @@ import android.widget.Button;
 
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button englishPolishBtn, polishEnglishBtn;
+    Button englishPolishBtn, polishEnglishBtn, wordsListBtn;
 
     private void setComponents() {
         englishPolishBtn = (Button) findViewById(R.id.englishPolishBtn);
         polishEnglishBtn = (Button) findViewById(R.id.polishEnglishBtn);
+        wordsListBtn = (Button) findViewById(R.id.wordsListBtn);
     }
 
     private void setOnClickListeners() {
         englishPolishBtn.setOnClickListener(this);
         polishEnglishBtn.setOnClickListener(this);
+        wordsListBtn.setOnClickListener(this);
     }
 
     @Override
@@ -77,6 +79,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(goToPolishEnglishActivity);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
                 break;
+            case R.id.wordsListBtn:
+                Intent goToWordsList = new Intent(LearnActivity.this, WordsListActivity.class);
+                startActivity(goToWordsList);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
         }
 
     }

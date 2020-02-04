@@ -127,6 +127,7 @@ public class AddActivity extends AppCompatActivity  {
                         addingBtn.setVisibility(View.INVISIBLE);
                         cancelBtn.setVisibility(View.INVISIBLE);
                         addANewWordET.setText("");
+                        englishEquivalentTV.setText("");
                     } else {
                         Toast.makeText(AddActivity.this, "Word not inserted", Toast.LENGTH_LONG).show();
                     }
