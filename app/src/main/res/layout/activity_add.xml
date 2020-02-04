@@ -23,6 +23,7 @@
         android:id="@+id/addANewWordET"
         android:layout_width="300dp"
         android:layout_height="55dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:gravity="center|center_vertical"
         android:hint="@string/addANewWordET"
@@ -31,9 +32,10 @@
         android:singleLine="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAWordTV"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintVertical_bias="0.009" />
 
     <Button
         android:id="@+id/searchBtn"
@@ -46,18 +48,19 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addANewWordET"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <TextView
         android:id="@+id/englishEquivalentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addingBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBtn"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintVertical_bias="0.444" />
 
     <Button
         android:id="@+id/addingBtn"

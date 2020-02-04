@@ -2,6 +2,10 @@ package com.example.englearn;
 
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,36 +21,32 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
         this.wordInserted = word;
     }
 
-    private StringBuilder contentBuilder = null;
     private String receivedString = null;
+    private String receivedJSON = null;
 
     @Override
     protected String doInBackground(String... strings) {
         try {
-            URL url = new URL("https://translate.googleapis.com/translate_a/t?client=p&sl=en&tl=pl&dt=t&q=" + wordInserted);
+            URL url = new URL("https://api.mymemory.translated.net/get?q=" + wordInserted + "!&langpair=en|pl");
             URLConnection urlConnection = url.openConnection();
             urlConnection.setRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("User-Agent", "REST-API");
+            urlConnection.addRequestProperty("User-Agent", "REST");
 
             InputStream inStream = urlConnection.getInputStream();
 
-            contentBuilder = new StringBuilder();
+            receivedJSON = new BufferedReader(new InputStreamReader(inStream)).readLine();
+            inStream.close();
+
             try {
-                BufferedReader receivedJSON = new BufferedReader(new InputStreamReader(inStream));
-                String str;
-                while((str = receivedJSON.readLine()) != null) {
-                    contentBuilder.append(str);
-                }
-                inStream.close();
+                JSONObject response = new JSONObject(receivedJSON);
+                JSONObject objectWithTranslatedWord = response.getJSONObject("responseData");
+                receivedString = objectWithTranslatedWord.getString("translatedText");
+                receivedString = receivedString.replaceAll("[\"\",:,?,!,';,-,/]", "");
+            } catch(JSONException ex) {
+                ex.printStackTrace();
             }
 
-            catch(IOException e) {
-                e.getMessage();
-            }
-
-            receivedString = contentBuilder.toString();
-            receivedString = receivedString.replaceAll("\"\"", "");
-
+            System.out.println(inStream);
 
             return receivedString;
 

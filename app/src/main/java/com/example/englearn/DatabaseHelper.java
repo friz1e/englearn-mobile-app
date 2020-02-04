@@ -57,4 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor response = db.rawQuery("SELECT foreign_language, native_language FROM " + TABLE_NAME + " ORDER BY RANDOM() LIMIT 1", null );
         return response;
     }
+    public Cursor getWords() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor response = db.rawQuery("SELECT foreign_language, native_language FROM " + TABLE_NAME, null);
+        return response;
+    }
 }

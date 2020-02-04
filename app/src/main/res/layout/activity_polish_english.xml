@@ -7,7 +7,7 @@
     tools:context=".PolishEnglishActivity">
 
     <Button
-        android:id="@+id/startBtn2"
+        android:id="@+id/startBtn"
         android:layout_width="150sp"
         android:layout_height="150sp"
         android:text="@string/startBtn"
@@ -15,22 +15,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/englishToPolishTV"
+        app:layout_constraintVertical_bias="0.183" />
 
     <TextView
-        android:id="@+id/polishToEnglishTV"
+        android:id="@+id/englishToPolishTV"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/polishToEnglish"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/questionWordTV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.500" />
 
     <TextView
         android:id="@+id/questionWordTV"
@@ -65,9 +65,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintTop_toBottomOf="@+id/startBtn"
+        app:layout_constraintVertical_bias="0.264" />
 
     <Button
         android:id="@+id/checkBtn"
@@ -79,8 +80,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintTop_toBottomOf="@+id/enterET"
+        app:layout_constraintVertical_bias="0.133" />
 
     <Button
         android:id="@+id/nextBtn"
@@ -92,7 +93,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintTop_toBottomOf="@+id/enterET"
+        app:layout_constraintVertical_bias="0.133" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

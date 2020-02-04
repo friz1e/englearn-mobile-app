@@ -18,7 +18,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
     Button startBtn, checkBtn, nextBtn;
 
     private void setComponents() {
-        startBtn = (Button) findViewById(R.id.startBtn2);
+        startBtn = (Button) findViewById(R.id.startBtn);
         questionWordTV = (TextView) findViewById(R.id.questionWordTV);
         answerWordTV = (TextView) findViewById(R.id.answerWordTV);
         enterET = (EditText) findViewById(R.id.enterET);
