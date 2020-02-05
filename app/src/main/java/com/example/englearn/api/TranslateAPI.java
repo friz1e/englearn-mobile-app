@@ -47,8 +47,6 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
                 ex.printStackTrace();
             }
 
-            System.out.println(inStream);
-
             receivedString = receivedString.toLowerCase();
 
             return receivedString;
