@@ -7,7 +7,7 @@
     tools:context=".activities.LearnActivity">
 
     <TextView
-        android:id="@+id/learnTV"
+        android:id="@+id/learnTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/learnTV"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.099" />
 
     <TextView
-        android:id="@+id/chooseYourTeachingMethodTV"
+        android:id="@+id/chooseYourTeachingMethodTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
@@ -28,11 +28,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learnTV"
+        app:layout_constraintTop_toBottomOf="@+id/learnTextView"
         app:layout_constraintVertical_bias="0.097" />
 
     <Button
-        android:id="@+id/englishPolishBtn"
+        android:id="@+id/englishPolishButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="@string/englishPolishBtn"
@@ -41,11 +41,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseYourTeachingMethodTV"
+        app:layout_constraintTop_toBottomOf="@+id/chooseYourTeachingMethodTextView"
         app:layout_constraintVertical_bias="0.169" />
 
     <Button
-        android:id="@+id/polishEnglishBtn"
+        android:id="@+id/polishEnglishButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="@string/polishEnglishBtn"
@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/englishPolishBtn"
+        app:layout_constraintTop_toBottomOf="@+id/englishPolishButton"
         app:layout_constraintVertical_bias="0.095" />
 
 

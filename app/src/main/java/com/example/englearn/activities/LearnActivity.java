@@ -9,21 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.englearn.R;
-import com.example.englearn.animations.Animations;
 
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button englishPolishBtn, polishEnglishBtn;
+    private Button englishPolishButton, polishEnglishButton;
 
     private void setComponents() {
-        englishPolishBtn = (Button) findViewById(R.id.englishPolishBtn);
-        polishEnglishBtn = (Button) findViewById(R.id.polishEnglishBtn);
+        englishPolishButton = (Button) findViewById(R.id.englishPolishButton);
+        polishEnglishButton = (Button) findViewById(R.id.polishEnglishButton);
     }
 
     private void setOnClickListeners() {
-        englishPolishBtn.setOnClickListener(this);
-        polishEnglishBtn.setOnClickListener(this);
+        englishPolishButton.setOnClickListener(this);
+        polishEnglishButton.setOnClickListener(this);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,28 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         setOnClickListeners();
     }
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.englishPolishButton:
+                Intent goToEnglishPolishActivity = new Intent(LearnActivity.this, EnglishPolishActivity.class);
+                startActivity(goToEnglishPolishActivity);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+                break;
+            case R.id.polishEnglishButton:
+                Intent goToPolishEnglishActivity = new Intent(LearnActivity.this, PolishEnglishActivity.class);
+                startActivity(goToPolishEnglishActivity);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+                break;
+        }
+    }
+
+
     private float x1, x2, y1, y2;
 
-    public boolean onTouchEvent(MotionEvent touchEvent) {                                               //swiping mechanism
-        switch(touchEvent.getAction()) {
+    public boolean onTouchEvent(MotionEvent touchEvent) {
+        switch (touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchEvent.getX();
                 y1 = touchEvent.getY();
@@ -45,7 +63,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
             case MotionEvent.ACTION_UP:
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
-                if(x1 > x2) {
+                if (x1 > x2) {
                     Intent i = new Intent(LearnActivity.this, AboutActivity.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
@@ -59,27 +77,12 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         return false;
     }
 
-    public void onBackPressed() {                                                                       //back button functionality
+
+    public void onBackPressed() {                                                                       
         super.onBackPressed();
         Intent i = new Intent(LearnActivity.this, AddActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.englishPolishBtn:                                                                 //going to EnglishPolishActivity
-                Intent goToEnglishPolishActivity = new Intent(LearnActivity.this, EnglishPolishActivity.class);
-                startActivity(goToEnglishPolishActivity);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
-                break;
-            case R.id.polishEnglishBtn:                                                                 //going to PolishEnglishActivity
-                Intent goToPolishEnglishActivity = new Intent(LearnActivity.this, PolishEnglishActivity.class);
-                startActivity(goToPolishEnglishActivity);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
-                break;
-        }
-
-    }
 }
+
