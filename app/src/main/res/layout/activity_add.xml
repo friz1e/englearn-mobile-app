@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
+    tools:context=".activities.AddActivity">
 
     <TextView
-        android:id="@+id/addAWordTV"
+        android:id="@+id/addAWordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.099" />
 
     <EditText
-        android:id="@+id/addANewWordET"
+        android:id="@+id/addANewWordEditText"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:layout_marginTop="26dp"
@@ -34,11 +34,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAWordTV"
+        app:layout_constraintTop_toBottomOf="@+id/addAWordTextView"
         app:layout_constraintVertical_bias="0.009" />
 
     <Button
-        android:id="@+id/searchBtn"
+        android:id="@+id/searchButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="@android:string/search_go"
@@ -47,45 +47,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addANewWordET"
+        app:layout_constraintTop_toBottomOf="@+id/addANewWordEditText"
         app:layout_constraintVertical_bias="0.087" />
 
     <TextView
-        android:id="@+id/englishEquivalentTV"
+        android:id="@+id/englishEquivalentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/addingBtn"
+        app:layout_constraintBottom_toTopOf="@+id/addingButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton"
         app:layout_constraintVertical_bias="0.444" />
 
     <Button
-        android:id="@+id/addingBtn"
+        android:id="@+id/addingButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:background="#53751E"
         android:text="@string/addingBtn"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton"
         app:layout_constraintVertical_bias="0.491" />
 
     <Button
-        android:id="@+id/cancelBtn"
+        android:id="@+id/cancelButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:background="#B93333"
         android:text="@string/cancelBtn"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addingBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addingButton"
         app:layout_constraintVertical_bias="0.093" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

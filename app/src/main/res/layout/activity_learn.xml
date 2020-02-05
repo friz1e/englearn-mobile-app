@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LearnActivity">
+    tools:context=".activities.LearnActivity">
 
     <TextView
         android:id="@+id/learnTV"
@@ -57,18 +57,5 @@
         app:layout_constraintTop_toBottomOf="@+id/englishPolishBtn"
         app:layout_constraintVertical_bias="0.095" />
 
-
-    <Button
-        android:id="@+id/wordsListBtn"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="@string/wordsListBtn"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/polishEnglishBtn"
-        app:layout_constraintVertical_bias="0.824" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

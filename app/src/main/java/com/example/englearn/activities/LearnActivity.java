@@ -1,28 +1,28 @@
-package com.example.englearn;
+package com.example.englearn.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.englearn.R;
+import com.example.englearn.animations.Animations;
+
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button englishPolishBtn, polishEnglishBtn, wordsListBtn;
+    private Button englishPolishBtn, polishEnglishBtn;
 
     private void setComponents() {
         englishPolishBtn = (Button) findViewById(R.id.englishPolishBtn);
         polishEnglishBtn = (Button) findViewById(R.id.polishEnglishBtn);
-        wordsListBtn = (Button) findViewById(R.id.wordsListBtn);
     }
 
     private void setOnClickListeners() {
         englishPolishBtn.setOnClickListener(this);
         polishEnglishBtn.setOnClickListener(this);
-        wordsListBtn.setOnClickListener(this);
     }
 
     @Override
@@ -79,10 +79,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(goToPolishEnglishActivity);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
                 break;
-            case R.id.wordsListBtn:
-                Intent goToWordsList = new Intent(LearnActivity.this, WordsListActivity.class);
-                startActivity(goToWordsList);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
         }
 
     }

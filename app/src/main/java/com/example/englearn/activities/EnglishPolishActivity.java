@@ -1,4 +1,4 @@
-package com.example.englearn;
+package com.example.englearn.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PolishEnglishActivity extends AppCompatActivity {
+import com.example.englearn.database.DatabaseHelper;
+import com.example.englearn.R;
+
+public class EnglishPolishActivity extends AppCompatActivity {
 
     TextView questionWordTV, answerWordTV;
     EditText enterET;
@@ -35,12 +38,10 @@ public class PolishEnglishActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
     }
 
-    AboutActivity aboutActivity = new AboutActivity();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_polish_english);
+        setContentView(R.layout.activity_english_polish);
 
         setComponents();
 
@@ -55,7 +56,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor response = wordsDatabase.getRandomWordsPair();                                   //get pair of words
+                Cursor response = wordsDatabase.getRandomWordsPair();                                    //get pair of words
                 if(response.moveToFirst()) {
                     do {
                         foreignLanguageWord = response.getString(0);
@@ -65,7 +66,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
                 response.close();
                 wordsDatabase.close();
 
-                questionWordTV.setText(nativeLanguageWord);
+                questionWordTV.setText(foreignLanguageWord);
                 if(!questionWordTV.getText().toString().equals("")) {
                     startBtn.setVisibility(View.INVISIBLE);
                     questionWordTV.setVisibility(View.VISIBLE);
@@ -79,14 +80,14 @@ public class PolishEnglishActivity extends AppCompatActivity {
 
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                                                             //check is user's answer correct
-                if (foreignLanguageWord.equals(enterET.getText().toString())) {
+            public void onClick(View v) {                                                            //check is user's answer correct
+                if (nativeLanguageWord.equals(enterET.getText().toString())) {
                     questionWordTV.setTextColor(Color.GREEN);
                     checkBtn.setVisibility(View.INVISIBLE);
                     nextBtn.setVisibility(View.VISIBLE);
                 } else {
                     questionWordTV.setTextColor(Color.RED);
-                    answerWordTV.setText(foreignLanguageWord);
+                    answerWordTV.setText(nativeLanguageWord);
                     answerWordTV.setVisibility(View.VISIBLE);
                     checkBtn.setVisibility(View.INVISIBLE);
                     nextBtn.setVisibility(View.VISIBLE);
@@ -108,7 +109,7 @@ public class PolishEnglishActivity extends AppCompatActivity {
                 wordsDatabase.close();
 
                 questionWordTV.setTextColor(oldColors);
-                questionWordTV.setText(nativeLanguageWord);
+                questionWordTV.setText(foreignLanguageWord);
                 answerWordTV.setText("");
 
                 nextBtn.setVisibility(View.INVISIBLE);

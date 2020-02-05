@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EnglishPolishActivity">
+    tools:context=".activities.EnglishPolishActivity">
 
     <Button
         android:id="@+id/startBtn"
         android:layout_width="150sp"
         android:layout_height="150sp"
+        android:background="@color/colorPrimary"
+        android:bottomLeftRadius="50dp"
         android:text="@string/startBtn"
+        android:topLeftRadius="100sp"
+        android:topRightRadius="100sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

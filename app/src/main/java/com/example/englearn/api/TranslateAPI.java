@@ -1,4 +1,4 @@
-package com.example.englearn;
+package com.example.englearn.api;
 
 import android.os.AsyncTask;
 
@@ -47,6 +47,8 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
             }
 
             System.out.println(inStream);
+
+            receivedString = receivedString.toLowerCase();
 
             return receivedString;
 

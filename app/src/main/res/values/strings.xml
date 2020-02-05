@@ -14,7 +14,7 @@
     <string name="quitBtn">Quit</string>
 
     // activity_about.xml //
-    <string name="aboutTV">Englearn is an application whose main purpose is increasing level of your English vocabulary</string>
+    <string name="aboutTV">Englearn is an application whose main purpose is increasing level of your English vocabulary!</string>
     <string name="darkThemeBtn">Dark Theme</string>
     <string name="lightThemeBtn">Light Theme</string>
 

@@ -11,13 +11,12 @@
         android:roundIcon="@mipmap/englearn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar.DarkDay">
-        <activity android:name=".WordsListActivity"></activity>
-        <activity android:name=".PolishEnglishActivity" />
-        <activity android:name=".EnglishPolishActivity" />
-        <activity android:name=".AddActivity" />
-        <activity android:name=".LearnActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".activities.PolishEnglishActivity" />
+        <activity android:name=".activities.EnglishPolishActivity" />
+        <activity android:name=".activities.AddActivity" />
+        <activity android:name=".activities.LearnActivity" />
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

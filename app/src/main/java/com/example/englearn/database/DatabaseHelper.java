@@ -1,4 +1,4 @@
-package com.example.englearn;
+package com.example.englearn.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -57,9 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor response = db.rawQuery("SELECT foreign_language, native_language FROM " + TABLE_NAME + " ORDER BY RANDOM() LIMIT 1", null );
         return response;
     }
-    public Cursor getWords() {
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor response = db.rawQuery("SELECT foreign_language, native_language FROM " + TABLE_NAME, null);
+        Cursor response = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return response;
     }
 }
