@@ -131,11 +131,11 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                 englishEquivalentTextView.getText().toString();
 
                 wordInsertedByUser = null;
-                englishEquivalentTextView = null;
 
                 animations.fadeInAnimationForButton(searchButton);
                 animations.fadeOutAnimationForButton(addingButton);
                 animations.fadeOutAnimationForButton(cancelButton);
+                animations.fadeOutAnimationForTextView(englishEquivalentTextView);
                 addANewWordEditText.setText("");
                 break;
         }
