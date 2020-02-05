@@ -7,29 +7,26 @@
     tools:context=".activities.EnglishPolishActivity">
 
     <Button
-        android:id="@+id/startBtn"
+        android:id="@+id/startButton"
         android:layout_width="150sp"
         android:layout_height="150sp"
         android:background="@color/colorPrimary"
-        android:bottomLeftRadius="50dp"
         android:text="@string/startBtn"
-        android:topLeftRadius="100sp"
-        android:topRightRadius="100sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/englishToPolishTV"
+        app:layout_constraintTop_toBottomOf="@+id/englishToPolishTextView"
         app:layout_constraintVertical_bias="0.183" />
 
     <TextView
-        android:id="@+id/englishToPolishTV"
+        android:id="@+id/englishToPolishTextView"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/englishToPolish"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/questionWordTV"
+        app:layout_constraintBottom_toTopOf="@+id/questionWordTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +34,7 @@
         app:layout_constraintVertical_bias="0.500" />
 
     <TextView
-        android:id="@+id/questionWordTV"
+        android:id="@+id/questionWordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="40sp"
@@ -49,7 +46,7 @@
         app:layout_constraintVertical_bias="0.358" />
 
     <TextView
-        android:id="@+id/answerWordTV"
+        android:id="@+id/answerWordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="40sp"
@@ -60,7 +57,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <EditText
-        android:id="@+id/enterET"
+        android:id="@+id/enterEditText"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -71,11 +68,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startBtn"
+        app:layout_constraintTop_toBottomOf="@+id/startButton"
         app:layout_constraintVertical_bias="0.264" />
 
     <Button
-        android:id="@+id/checkBtn"
+        android:id="@+id/checkButton"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
         android:text="@string/checkBtn"
@@ -84,11 +81,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterET"
+        app:layout_constraintTop_toBottomOf="@+id/enterEditText"
         app:layout_constraintVertical_bias="0.133" />
 
     <Button
-        android:id="@+id/nextBtn"
+        android:id="@+id/nextButton"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
         android:text="@string/nextBtn"
@@ -97,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterET"
+        app:layout_constraintTop_toBottomOf="@+id/enterEditText"
         app:layout_constraintVertical_bias="0.133" />
 
 

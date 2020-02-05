@@ -14,28 +14,34 @@ import android.widget.TextView;
 import com.example.englearn.database.DatabaseHelper;
 import com.example.englearn.R;
 
-public class EnglishPolishActivity extends AppCompatActivity {
+public class EnglishPolishActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView questionWordTV, answerWordTV;
-    EditText enterET;
-    Button startBtn, checkBtn, nextBtn;
+    private TextView questionWordTextView, answerWordTextView;
+    private EditText enterEditText;
+    private Button startButton, checkButton, nextButton;
 
     private void setComponents() {
-        startBtn = (Button) findViewById(R.id.startBtn);
-        questionWordTV = (TextView) findViewById(R.id.questionWordTV);
-        answerWordTV = (TextView) findViewById(R.id.answerWordTV);
-        enterET = (EditText) findViewById(R.id.enterET);
-        checkBtn = (Button) findViewById(R.id.checkBtn);
-        nextBtn = (Button) findViewById(R.id.nextBtn);
+        startButton = (Button) findViewById(R.id.startButton);
+        checkButton = (Button) findViewById(R.id.checkButton);
+        nextButton = (Button) findViewById(R.id.nextButton);
+
+        questionWordTextView = (TextView) findViewById(R.id.questionWordTextView);
+        questionWordTextView.setTextColor(Color.parseColor("#fafafa"));
+
+        answerWordTextView = (TextView) findViewById(R.id.answerWordTextView);
+
+        enterEditText = (EditText) findViewById(R.id.enterEditText);
+
+        questionWordTextView.setVisibility(View.INVISIBLE);
+        enterEditText.setVisibility(View.INVISIBLE);
+        checkButton.setVisibility(View.INVISIBLE);
+        nextButton.setVisibility(View.INVISIBLE);
     }
 
-    DatabaseHelper wordsDatabase;
-    String foreignLanguageWord;
-    String nativeLanguageWord;
-
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    private void setOnClickListeners() {
+        startButton.setOnClickListener(this);
+        checkButton.setOnClickListener(this);
+        nextButton.setOnClickListener(this);
     }
 
     @Override
@@ -44,78 +50,86 @@ public class EnglishPolishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_english_polish);
 
         setComponents();
-
-        questionWordTV.setVisibility(View.INVISIBLE);
-        answerWordTV.setVisibility(View.INVISIBLE);
-        enterET.setVisibility(View.INVISIBLE);
-        checkBtn.setVisibility(View.INVISIBLE);
-        nextBtn.setVisibility(View.INVISIBLE);
-
-        wordsDatabase = new DatabaseHelper(this);
-
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cursor response = wordsDatabase.getRandomWordsPair();                                    //get pair of words
-                if(response.moveToFirst()) {
-                    do {
-                        foreignLanguageWord = response.getString(0);
-                        nativeLanguageWord = response.getString(1);
-                    } while (response.moveToNext());
-                }
-                response.close();
-                wordsDatabase.close();
-
-                questionWordTV.setText(foreignLanguageWord);
-                if(!questionWordTV.getText().toString().equals("")) {
-                    startBtn.setVisibility(View.INVISIBLE);
-                    questionWordTV.setVisibility(View.VISIBLE);
-                    enterET.setVisibility(View.VISIBLE);
-                    checkBtn.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        final ColorStateList oldColors = questionWordTV.getTextColors();
-
-        checkBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {                                                            //check is user's answer correct
-                if (nativeLanguageWord.equals(enterET.getText().toString())) {
-                    questionWordTV.setTextColor(Color.GREEN);
-                    checkBtn.setVisibility(View.INVISIBLE);
-                    nextBtn.setVisibility(View.VISIBLE);
-                } else {
-                    questionWordTV.setTextColor(Color.RED);
-                    answerWordTV.setText(nativeLanguageWord);
-                    answerWordTV.setVisibility(View.VISIBLE);
-                    checkBtn.setVisibility(View.INVISIBLE);
-                    nextBtn.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {                                                             //get a new pair of words
-                Cursor response = wordsDatabase.getRandomWordsPair();
-                if(response.moveToFirst()) {
-                    do {
-                        foreignLanguageWord = response.getString(0);
-                        nativeLanguageWord = response.getString(1);
-                    } while (response.moveToNext());
-                }
-                response.close();
-                wordsDatabase.close();
-
-                questionWordTV.setTextColor(oldColors);
-                questionWordTV.setText(foreignLanguageWord);
-                answerWordTV.setText("");
-
-                nextBtn.setVisibility(View.INVISIBLE);
-                checkBtn.setVisibility(View.VISIBLE);
-            }
-        });
+        setOnClickListeners();
     }
 
+
+
+    private DatabaseHelper wordsDatabase;
+    private String foreignLanguageWord;
+    private String nativeLanguageWord;
+
+    @Override
+    public void onClick(View v) {
+
+        Cursor responseFromDatabase;
+        wordsDatabase = new DatabaseHelper(this);
+
+        switch(v.getId()) {
+            case R.id.startButton:
+                questionWordTextView.getTextColors();
+                responseFromDatabase = wordsDatabase.getRandomWordsPair();
+                if(responseFromDatabase.moveToFirst()) {
+                    do {
+                        foreignLanguageWord = responseFromDatabase.getString(0);
+                        nativeLanguageWord = responseFromDatabase.getString(1);
+                    } while (responseFromDatabase.moveToNext());
+                }
+                responseFromDatabase.close();
+                wordsDatabase.close();
+
+                questionWordTextView.setText(foreignLanguageWord);
+
+                boolean ifQuestionWordTextViewIsEmpty = questionWordTextView.getText().toString().equals("");
+                if(!ifQuestionWordTextViewIsEmpty) {
+                    startButton.setVisibility(View.INVISIBLE);
+                    questionWordTextView.setVisibility(View.VISIBLE);
+                    enterEditText.setVisibility(View.VISIBLE);
+                    checkButton.setVisibility(View.VISIBLE);
+                }
+                break;
+
+
+            case R.id.checkButton:
+                boolean ifUserEnteredCorrectAnswer = nativeLanguageWord.equals(enterEditText.getText().toString());
+                if (ifUserEnteredCorrectAnswer) {
+                    questionWordTextView.setTextColor(Color.GREEN);
+                    checkButton.setVisibility(View.INVISIBLE);
+                    nextButton.setVisibility(View.VISIBLE);
+                } else {
+                    questionWordTextView.setTextColor(Color.RED);
+                    answerWordTextView.setText(nativeLanguageWord);
+                    answerWordTextView.setVisibility(View.VISIBLE);
+                    checkButton.setVisibility(View.INVISIBLE);
+                    nextButton.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.nextButton:
+                responseFromDatabase = wordsDatabase.getRandomWordsPair();
+                if(responseFromDatabase.moveToFirst()) {
+                    do {
+                        foreignLanguageWord = responseFromDatabase.getString(0);
+                        nativeLanguageWord = responseFromDatabase.getString(1);
+                    } while (responseFromDatabase.moveToNext());
+                }
+                responseFromDatabase.close();
+                wordsDatabase.close();
+
+                questionWordTextView.setTextColor(Color.parseColor("#fafafa"));
+                questionWordTextView.setText(foreignLanguageWord);
+                answerWordTextView.setText("");
+
+
+                nextButton.setVisibility(View.INVISIBLE);
+                checkButton.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    }
 }

@@ -46,7 +46,6 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +136,6 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                 animations.fadeInAnimationForButton(searchButton);
                 animations.fadeOutAnimationForButton(addingButton);
                 animations.fadeOutAnimationForButton(cancelButton);
-                animations.fadeOutAnimationForTextView(englishEquivalentTextView);
                 addANewWordEditText.setText("");
                 break;
         }

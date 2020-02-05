@@ -35,6 +35,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -50,6 +51,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
 
 
     private float x1, x2, y1, y2;
@@ -78,7 +80,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    public void onBackPressed() {                                                                       
+
+    public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(LearnActivity.this, AddActivity.class);
         startActivity(i);
