@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             @Override
-            public void run() {                                                                //welcome screen animation
+            public void run() {
                 Intent intent = new Intent(WelcomeActivity.this, AddActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_fade_in, R.anim.anim_fade_out);

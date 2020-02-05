@@ -10,9 +10,9 @@ import com.example.englearn.R;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private float x1, x2, y1, y2;                                                                        //co-ordinates
+    private float x1, x2, y1, y2;
 
-    public boolean onTouchEvent(MotionEvent touchEvent) {                                               // swiping mechanism
+    public boolean onTouchEvent(MotionEvent touchEvent) {
         switch(touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchEvent.getX();
@@ -31,7 +31,7 @@ public class AboutActivity extends AppCompatActivity {
         return false;
     }
 
-    public void onBackPressed() {                                                                       //back button functionality
+    public void onBackPressed() {                                                                       
         super.onBackPressed();
         Intent i = new Intent(AboutActivity.this, LearnActivity.class);
         startActivity(i);

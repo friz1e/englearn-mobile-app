@@ -28,8 +28,9 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
     protected String doInBackground(String... strings) {
         try {
             URL url = new URL("https://api.mymemory.translated.net/get?q=" + wordInserted + "!&langpair=en|pl");
+
             URLConnection urlConnection = url.openConnection();
-            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             urlConnection.addRequestProperty("User-Agent", "REST");
 
             InputStream inStream = urlConnection.getInputStream();
@@ -38,8 +39,8 @@ public class TranslateAPI extends AsyncTask<String, String, String>{
             inStream.close();
 
             try {
-                JSONObject response = new JSONObject(receivedJSON);
-                JSONObject objectWithTranslatedWord = response.getJSONObject("responseData");
+                JSONObject responseInJsonFormat = new JSONObject(receivedJSON);
+                JSONObject objectWithTranslatedWord = responseInJsonFormat.getJSONObject("responseData");
                 receivedString = objectWithTranslatedWord.getString("translatedText");
                 receivedString = receivedString.replaceAll("[\"\",:,?,!,';,-,/]", "");
             } catch(JSONException ex) {
